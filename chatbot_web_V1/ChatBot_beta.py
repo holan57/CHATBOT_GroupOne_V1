@@ -18,13 +18,14 @@ st.title("Gemini ChatBot")
 with st.sidebar:
     st.header("設定")
     # 建立一個密碼輸入框讓使用者輸入 Google API Key
-    api_key = st.text_input("請輸入 Google API Key", type="password")
+    api_key = st.text_input("請輸入 Google API Key", type="password", key="api_key_input")
     submit_btn = st.button("確認金鑰")
     
     # 新增清除 Key 的按鈕
     if st.button("清除 Key"):
         # 清除 session_state 中的所有內容 (包含 Key 和對話紀錄)
         st.session_state.clear()
+        st.session_state["api_key_input"] = ""
         st.rerun()
 
     # 定義可用的 Gemini 模型列表
